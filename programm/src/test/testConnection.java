@@ -1,5 +1,7 @@
 package test;
 
+import database.SqliteConnection;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +20,7 @@ public class testConnection {
         try
         {
             // create a database connection
-            connection = database.Connection.getInstance();
+            connection = SqliteConnection.getInstance();
             Statement statement = connection.createStatement();
 
             statement.executeUpdate("drop table if exists person");
@@ -35,8 +37,6 @@ public class testConnection {
         }
         catch(SQLException e)
         {
-            // if the error message is "out of memory",
-            // it probably means no database file is found
             System.err.println(e.getMessage());
         }
         finally
@@ -48,7 +48,6 @@ public class testConnection {
             }
             catch(SQLException e)
             {
-                // connection close failed.
                 System.err.println(e.getMessage());
             }
         }
