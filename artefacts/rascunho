@@ -1,0 +1,68 @@
+Wallet:
+
+
+
+	
+----------------------------------------------------------------
+
+Stocks:
+
+Constructor(name, amount, uniquePrice)
+
+	this.totalPrice = this.amount * this.uniquePrice;
+	
+	this.averagePrice = calcAveragePrice(this, Stocks old)
+				(this.totalPrice + old.totalPrice)/(this.amount + old.amount);
+	this.amount += old.amount;
+	
+	this.totalPrice += old.totalPrice;
+	
+	new Buy(this);
+	
+----------------------------------------------------------------
+
+Buy:
+
+Constructor(Stocks stock)
+	storeStock(stock)  -> RESPONSAVEL POR SALVAR NO BD (uniquePrice NÃO será salvo no BD)
+	
+----------------------------------------------------------------
+
+Sell:
+
+
+deleteStockByName(this.name)  -> RESPONSAVEL POR DELETAR NO BD BASEADO NO NOME DA AÇÃO
+	
+=============================================
+
+CARTEIRA:
+	Nome  Quantidade  Valor aplicado
+	A3    | 2         | 20           | VENDER - ALTERAR
+	
+	
+	VENDER(BUTTON) -> sell.deleteStockByName(stock[index].getName()), atualiza a carteira
+	COMPRAR AÇOES(BUTTON) -> Vai pro menu de COMPRA DE AÇÕES
+
+=============================================
+
+COMPRA DE AÇOES:
+
+Nome: A3 ---  name
+Quantidade: 2 --- amount
+Preço único: 10 --- uniquePrice
+
+BOTÃO COMPRAR -> new Stocks(name, amount, uniquePrice), vai pro menu CARTEIRA
+
+=============================================
+
+VENDA DE AÇOES:
+
+Nome: (JÁ VEM PRÉ-SELECIONADO)
+Quantidade: 1 
+Preço único: 10
+
+=============================================
+
+TABLE STOCKS
+name amount averagePrice
+A3    10    10
