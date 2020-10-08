@@ -64,7 +64,7 @@
             <y:AttributeLabel xml:space="preserve">- stocksList : ArrayList&lt;Stocks&gt;
 - valueApplied : Double
 - profitsWallet : Double</y:AttributeLabel>
-            <y:MethodLabel xml:space="preserve">+ calcProfit()
+            <y:MethodLabel xml:space="preserve">+ calcProfit(stockList) : Double
 
 
 </y:MethodLabel>
