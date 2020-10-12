@@ -27,6 +27,14 @@ public class Stocks {
         this.setTotalPrice(this.calcTotalPrice());
     }
 
+    public Stocks(int id, String name, int amount, double uniquePrice) {
+        this.id = id;
+        this.name = name;
+        this.amount = amount;
+        this.uniquePrice = uniquePrice;
+        this.setTotalPrice(this.calcTotalPrice());
+    }
+
     public int getId() {
         return id;
     }
@@ -74,5 +82,16 @@ public class Stocks {
      */
     public double calcTotalPrice() {
         return this.uniquePrice * this.amount;
+    }
+
+    @Override
+    public String toString() {
+        return "Stocks{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", uniquePrice=" + uniquePrice +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }
