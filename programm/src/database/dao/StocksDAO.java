@@ -140,9 +140,9 @@ public class StocksDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
                stocksList = new ArrayList<>();
-               Stocks stocks = new Stocks();
 
                while(resultSet.next()) {
+                   Stocks stocks = new Stocks();
                    stocks.setId(resultSet.getInt("id"));
                    stocks.setName(resultSet.getString("name"));
                    stocks.setAmount(resultSet.getInt("amount"));
