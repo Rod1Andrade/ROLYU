@@ -1,6 +1,6 @@
-package test.database;
+package test.database.connection;
 
-import database.SqliteConnection;
+import database.connection.SqliteConnection;
 import org.junit.Assert;
 import org.junit.Test;
 
