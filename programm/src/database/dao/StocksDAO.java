@@ -16,14 +16,14 @@ import java.util.List;
  *
  * @author Rodrigo Andrade
  */
-public class StocksDAO {
+public class StocksDAO implements InterfaceDAO<Stocks> {
 
     public static String TABLE_NAME = "tb_stocks";
 
     /**
      * Criar a tablea com base no objeto
      */
-    public boolean createStockTable() throws SQLException {
+    public boolean createTable() throws SQLException {
 
         Connection connection = SqliteConnection.getInstance();
 

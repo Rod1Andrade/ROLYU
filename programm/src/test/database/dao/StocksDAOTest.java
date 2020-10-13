@@ -24,7 +24,7 @@ public class StocksDAOTest {
     @Test
     public void shouldCreateATable() throws SQLException {
         StocksDAO stocksDAO = new StocksDAO();
-        Assert.assertTrue(stocksDAO.createStockTable());
+        Assert.assertTrue(stocksDAO.createTable());
     }
 
     @Test
@@ -71,5 +71,6 @@ public class StocksDAOTest {
         List<Stocks> stocksList = stocksDAO.getAll();
 
         stocksList.forEach(System.out::println);
+        Assert.assertNotNull(stocksList);
     }
 }
