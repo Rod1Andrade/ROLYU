@@ -47,7 +47,7 @@ public class StocksDAO implements InterfaceDAO<Stocks> {
 
         String sql = "INSERT INTO tb_stocks('name', 'amount', 'totalPrice') VALUES (?, ?, ?)";
 
-        Connection connection = null;
+        Connection connection;
         try {
             connection = SqliteConnection.getInstance();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class StocksDAO implements InterfaceDAO<Stocks> {
      * @return True caso a operacao deu certo
      */
     public int update(Stocks stocks) {
-        Connection connection = null;
+        Connection connection;
 
         String sql = "UPDATE " + TABLE_NAME + " SET " +
                 "name = ?, " +
@@ -94,12 +94,12 @@ public class StocksDAO implements InterfaceDAO<Stocks> {
     /**
      * Busca uma Stocks por id
      * @param id Int
-     * @return
+     * @return Int
      */
     public Stocks getById(int id) {
 
         Stocks stocks = null;
-        Connection connection = null;
+        Connection connection;
         String sql = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
 
         try {
@@ -128,9 +128,9 @@ public class StocksDAO implements InterfaceDAO<Stocks> {
      * @return List<Stocks>
      */
     public List<Stocks> getAll() {
-        List<Stocks> stocksList = null;
+        List<Stocks> stocksList;
 
-        Connection connection = null;
+        Connection connection;
         String sql = "SELECT * FROM " + TABLE_NAME;
 
         try {
@@ -163,7 +163,7 @@ public class StocksDAO implements InterfaceDAO<Stocks> {
      */
     public int remove(Stocks stocks) {
 
-        Connection connection = null;
+        Connection connection;
         String dml = "DELETE FROM " + TABLE_NAME + " WHERE id = ?";
 
         try {
