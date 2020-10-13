@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Rodrigo Andrade
  */
-public class StocksDAO implements InterfaceDAO<Stocks> {
+public class StocksDAO implements DataAccessObject<Stocks> {
 
     public static String TABLE_NAME = "tb_stocks";
 

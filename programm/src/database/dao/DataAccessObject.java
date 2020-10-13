@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Rodrigo Andrade
  */
-public interface InterfaceDAO<T> {
+public interface DataAccessObject<T> {
 
     /**
      * Cria tabela da entidade no banco.
