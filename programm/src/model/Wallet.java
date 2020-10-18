@@ -19,8 +19,8 @@ public class Wallet {
         return stocksList;
     }
 
-    public void addStocks(Stocks stocks) {
-        this.stocksList.add(stocks);
+    public void setStocksList(List<Stocks> stocksList) {
+        this.stocksList = stocksList;
     }
 
     public double getBalance() {
