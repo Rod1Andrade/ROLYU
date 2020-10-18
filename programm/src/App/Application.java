@@ -1,5 +1,7 @@
 package App;
 
+import View.Screen.MainScreen;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,8 +15,15 @@ public class Application extends JFrame {
      * @param title
      */
     private Application(String title) {
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        int width = (int) (screenSize.getWidth() * 0.7);
+        int height = (int) (screenSize.getHeight() * 0.8);
+
         this.setTitle(title);
-        this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        this.setResizable(false);
+        this.setMinimumSize(new Dimension(width, height));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -26,11 +35,11 @@ public class Application extends JFrame {
     private void run(JComponent component) {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        this.add(component);
+        this.getContentPane().add(component);
     }
 
     public static void main(String[] args) {
-        new Application("ROLYU").run(new JPanel());
+        new Application("ROLYU").run(new MainScreen());
     }
 
 }
