@@ -1,2 +1,12 @@
-package App;public class Application {
+package App;
+
+/**
+ * Classe Principal
+ */
+public class Application {
+
+    public static void main(String[] args) {
+
+    }
+
 }
