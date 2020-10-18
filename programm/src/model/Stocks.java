@@ -1,5 +1,7 @@
 package model;
 
+import Utils.Utils;
+
 /**
  * Entidade Stocks
  *
@@ -48,6 +50,7 @@ public class Stocks {
     }
 
     public void setName(String name) {
+        Utils.isRequired(name);
         this.name = name;
     }
 
@@ -56,6 +59,7 @@ public class Stocks {
     }
 
     public void setAmount(int amount) {
+        Utils.isRequired(amount);
         this.amount = amount;
     }
 
@@ -64,6 +68,7 @@ public class Stocks {
     }
 
     public void setUniquePrice(double uniquePrice) {
+        Utils.isRequired(uniquePrice);
         this.uniquePrice = uniquePrice;
     }
 
@@ -72,6 +77,7 @@ public class Stocks {
     }
 
     public void setTotalPrice(double totalPrice) {
+        Utils.isRequired(totalPrice);
         this.totalPrice = totalPrice;
     }
 
