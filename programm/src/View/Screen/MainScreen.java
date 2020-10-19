@@ -1,15 +1,11 @@
 package View.Screen;
 
-import Controller.ChangeScreenController;
 import Controller.MouseChangeScreenController;
 import View.Components.BalanceComponent;
 import View.Components.NewStocksFormComponent;
-import model.Stocks;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  * Tela Principal

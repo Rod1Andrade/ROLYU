@@ -1,12 +1,9 @@
 package View.Screen;
 
-import Controller.ChangeScreenController;
 import Controller.MouseChangeScreenController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  * Tela para mostrar as Stocks
