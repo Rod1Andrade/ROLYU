@@ -20,9 +20,9 @@ public class NewStocksForm extends AbstractComponent {
 
     private JTextField uniquePriceField;
 
-    private JButton buttonSave;
+    private ButtonComponent buttonSave;
 
-    private JButton buttonClear;
+    private ButtonComponent buttonClear;
 
     public NewStocksForm() {
 
@@ -110,9 +110,10 @@ public class NewStocksForm extends AbstractComponent {
         JPanel actionPanel = new JPanel(new BorderLayout());
         actionPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        this.buttonSave = new JButton(Constants.LABEL_SAVE);
-        this.buttonClear = new JButton(Constants.LABEL_Clear);
-        this.actionButtonConfig();
+        this.buttonSave = new ButtonComponent(Constants.LABEL_SAVE, Color.WHITE, Color.BLACK);
+        this.buttonSave.hover(Colors.PRIMARY_COLOR, Color.WHITE);
+        this.buttonClear = new ButtonComponent(Constants.LABEL_Clear, Color.WHITE, Color.BLACK);
+        this.buttonClear.hover(Colors.DANGER_COLOR, Color.WHITE);
 
         gridLayout = new GridLayout(1, 2);
         gridLayout.setHgap(10);
@@ -126,34 +127,4 @@ public class NewStocksForm extends AbstractComponent {
 
         this.add(actionPanel, BorderLayout.SOUTH);
     }
-
-    /**
-     * Aplicação de certas configurações ao botões de ação desse componente.
-     */
-    private void actionButtonConfig() {
-        // Button Save
-        this.buttonSave.setContentAreaFilled(true);
-        this.buttonSave.setFocusPainted(false);
-        this.buttonSave.setRolloverEnabled(false);
-        this.buttonSave.setBorderPainted(true);
-
-        this.buttonSave.setModel(new ResetButtonModel());
-
-        this.buttonSave.setBackground(Color.white);
-        this.buttonSave.addMouseListener(new MouseHover(buttonSave, Colors.PRIMARY_COLOR, Color.WHITE));
-        this.buttonSave.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        // Button Clear
-        this.buttonClear.setContentAreaFilled(true);
-        this.buttonClear.setFocusPainted(false);
-        this.buttonClear.setRolloverEnabled(false);
-        this.buttonClear.setBorderPainted(true);
-
-        this.buttonClear.setModel(new ResetButtonModel());
-
-        this.buttonClear.setBackground(Color.white);
-        this.buttonClear.addMouseListener(new MouseHover(buttonClear, Colors.DANGER_COLOR, Color.WHITE));
-        this.buttonClear.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }
-
 }
