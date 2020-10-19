@@ -13,7 +13,7 @@ import java.awt.*;
  *
  * @author Rodrigo Andrade
  */
-public class BalanceComponent extends JPanel {
+public class BalanceComponent extends AbstractComponent {
 
     private JLabel labelBalance;
 
@@ -24,7 +24,6 @@ public class BalanceComponent extends JPanel {
     private int pixels;
 
     public BalanceComponent() {
-
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);
@@ -66,22 +65,4 @@ public class BalanceComponent extends JPanel {
 
         this.add(southPanel, BorderLayout.SOUTH);
     }
-
-    private void dropShadow(int pixels) {
-        this.pixels = pixels;
-        Border border = BorderFactory.createEmptyBorder(pixels, pixels, pixels, pixels);
-        this.setBorder(BorderFactory.createCompoundBorder(this.getBorder(), border));
-        this.setLayout(new BorderLayout());
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        int shade = 0;
-        int topOpacity = 80;
-        for (int i = 0; i < pixels; i++) {
-            g.setColor(new Color(shade, shade, shade, ((topOpacity / pixels) * i)));
-            g.drawRect(i, i, this.getWidth() - ((i * 2) + 1), this.getHeight() - ((i * 2) + 1));
-        }
-    }
-
 }
