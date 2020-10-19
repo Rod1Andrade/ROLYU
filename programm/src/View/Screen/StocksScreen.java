@@ -1,8 +1,11 @@
 package View.Screen;
 
 import Controller.MouseChangeScreenController;
+import View.Components.WalletComponent;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -11,6 +14,8 @@ import java.awt.*;
  * @author Rodrigo Andrade
  */
 public class StocksScreen extends AbsctractScreen {
+
+    WalletComponent wallet;
 
     public StocksScreen(JFrame parent, AbsctractScreen parentScreen) {
         super(parent, parentScreen);
@@ -22,7 +27,14 @@ public class StocksScreen extends AbsctractScreen {
                 new MouseChangeScreenController(parent, parentScreen)
         );
 
+        JPanel walletPanel = new JPanel();
+        wallet = new WalletComponent();
+        walletPanel.add(wallet);
+
+        walletPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+
         this.add(label, BorderLayout.NORTH);
+        this.add(walletPanel, BorderLayout.CENTER);
     }
 
 

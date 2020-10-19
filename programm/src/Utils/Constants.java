@@ -1,5 +1,7 @@
 package Utils;
 
+import java.awt.*;
+
 /**
  * Classe para valores constantes.
  *
@@ -17,5 +19,7 @@ public class Constants {
 
     public static final String TITLE_APP = "Rolyu";
     public static final String TITLE_NEW_STOCKS = "Nova Ação";
+
+    public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 }

@@ -26,12 +26,11 @@ public class NewStocksFormComponent extends AbstractComponent {
 
     public NewStocksFormComponent() {
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);
 
         // O NewStocksForm componente ocupa 30% do tamanho da tela na largura e 60% na altura.
-        int width = (int) (screenSize.getWidth() * 0.3);
-        int height = (int) (screenSize.getHeight() * 0.5);
+        int width = (int) (Constants.SCREEN_SIZE.getWidth() * 0.3);
+        int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.5);
 
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(width, height));
