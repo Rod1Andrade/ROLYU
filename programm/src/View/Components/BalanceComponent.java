@@ -4,7 +4,6 @@ import Utils.Colors;
 import Utils.Constants;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
@@ -28,6 +27,7 @@ public class BalanceComponent extends AbstractComponent {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);
 
+        // O Balance componente ocupa 30% do tamanho da tela em ambas as direcoes.
         int width = (int) (screenSize.getWidth() * 0.3);
         int height = (int) (screenSize.getHeight() * 0.3);
 

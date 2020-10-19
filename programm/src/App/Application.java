@@ -1,5 +1,6 @@
 package App;
 
+import Utils.Constants;
 import View.Screen.MainScreen;
 
 import javax.swing.*;
@@ -39,7 +40,7 @@ public class Application extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Application("ROLYU").run(new MainScreen());
+        new Application(Constants.TITLE_APP).run(new MainScreen());
     }
 
 }
