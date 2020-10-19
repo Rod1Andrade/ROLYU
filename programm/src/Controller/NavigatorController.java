@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Classe responsavel por fazer a navegacao entre telas.
  */
-public class Navigator  {
+public class NavigatorController {
 
     /**
      * Navega de um baseFrame para um JPanel

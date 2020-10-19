@@ -1,14 +1,11 @@
 package View.Components;
 
-import Controller.Navigator;
 import Utils.Colors;
 import Utils.Constants;
-import View.Screen.StocksScreen;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**

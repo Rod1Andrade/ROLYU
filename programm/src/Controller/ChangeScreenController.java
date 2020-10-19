@@ -20,6 +20,6 @@ public class ChangeScreenController {
      * Faz a mudanca entre tela.
      */
     public void change() {
-        Navigator.to(this.baseFrame, this.toPanel);
+        NavigatorController.to(this.baseFrame, this.toPanel);
     }
 }
