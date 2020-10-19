@@ -17,6 +17,8 @@ public class MainScreen extends JPanel {
 
     private JFrame baseFrame;
 
+    private JPanel stocksScreen;
+
     private BalanceComponent balanceComponent;
 
     private NewStocksFormComponent newStocksForm;
@@ -24,6 +26,7 @@ public class MainScreen extends JPanel {
     public MainScreen(JFrame baseFrame) {
 
         this.baseFrame = baseFrame;
+        this.stocksScreen = new StocksScreen();
 
         GridLayout gridLayout = new GridLayout(1, 2);
         gridLayout.setHgap(10);
@@ -35,7 +38,7 @@ public class MainScreen extends JPanel {
         // Coluna 1
         JPanel balanceComponentPanel = new JPanel();
         this.balanceComponent = new BalanceComponent(
-                new TextAction(baseFrame, new StocksScreen())
+                new TextAction(this.baseFrame, this.stocksScreen)
         );
         balanceComponentPanel.add(balanceComponent);
         balanceComponentPanel.setBackground(Color.WHITE);

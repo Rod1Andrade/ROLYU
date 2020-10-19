@@ -17,6 +17,8 @@ public class Navigator  {
         baseFrame.getContentPane().removeAll();
         baseFrame.getContentPane().add(toPanel);
         baseFrame.getContentPane().doLayout();
+        baseFrame.revalidate();
+        baseFrame.repaint();
         baseFrame.update(baseFrame.getGraphics());
     }
 
