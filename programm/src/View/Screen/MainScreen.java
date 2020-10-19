@@ -1,9 +1,10 @@
 package View.Screen;
 
 import Controller.ChangeScreenController;
-import Controller.Navigator;
+import Controller.MouseChangeScreenController;
 import View.Components.BalanceComponent;
 import View.Components.NewStocksFormComponent;
+import model.Stocks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,20 +14,18 @@ import java.awt.event.MouseListener;
 /**
  * Tela Principal
  */
-public class MainScreen extends JPanel {
+public class MainScreen extends AbsctractScreen {
 
-    private JFrame baseFrame;
-
-    private JPanel stocksScreen;
+    private StocksScreen stocksScreen;
 
     private BalanceComponent balanceComponent;
 
     private NewStocksFormComponent newStocksForm;
 
-    public MainScreen(JFrame baseFrame) {
+    public MainScreen(JFrame parent) {
+        super(parent, null);
 
-        this.baseFrame = baseFrame;
-        this.stocksScreen = new StocksScreen();
+        this.stocksScreen = new StocksScreen(parent, this);
 
         GridLayout gridLayout = new GridLayout(1, 2);
         gridLayout.setHgap(10);
@@ -38,7 +37,7 @@ public class MainScreen extends JPanel {
         // Coluna 1
         JPanel balanceComponentPanel = new JPanel();
         this.balanceComponent = new BalanceComponent(
-                new TextAction(this.baseFrame, this.stocksScreen)
+                new MouseChangeScreenController(this.parent, this.stocksScreen)
         );
         balanceComponentPanel.add(balanceComponent);
         balanceComponentPanel.setBackground(Color.WHITE);
@@ -52,42 +51,6 @@ public class MainScreen extends JPanel {
         newStocksFormPanel.setBackground(Color.WHITE);
 
         this.add(newStocksFormPanel);
-    }
-
-    private class TextAction implements MouseListener {
-
-        private JFrame frame;
-        private JPanel panel;
-
-        public TextAction(JFrame frame, JPanel panel) {
-            this.frame = frame;
-            this.panel = panel;
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            new ChangeScreenController(this.frame, this.panel).change();
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
     }
 
 }
