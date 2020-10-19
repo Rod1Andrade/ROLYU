@@ -1,5 +1,8 @@
 package View.Components;
 
+import Utils.Colors;
+import Utils.Constants;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -7,6 +10,8 @@ import java.awt.*;
 
 /**
  * Componente de saldo
+ *
+ * @author Rodrigo Andrade
  */
 public class BalanceComponent extends JPanel {
 
@@ -32,8 +37,15 @@ public class BalanceComponent extends JPanel {
 
         // Componente CENTER
         JPanel centerPanel = new JPanel(new BorderLayout());
-        this.labelBalance = new JLabel("Saldo");
+
+        Font font = new Font("Arial", Font.PLAIN, 33);
+
+        this.labelBalance = new JLabel(Constants.LABEL_BALANCE);
+        this.labelBalance.setFont(font);
+        this.labelBalance.setForeground(Colors.PRIMARY_COLOR);
+
         this.textValue = new JLabel("R$ 1500,00");
+        this.textValue.setFont(font);
 
         centerPanel.add(labelBalance, BorderLayout.WEST);
         centerPanel.add(textValue, BorderLayout.EAST);
@@ -45,10 +57,12 @@ public class BalanceComponent extends JPanel {
 
         // Componente SOUTH
         JPanel southPanel = new JPanel(new BorderLayout());
-        this.textAction = new JLabel("Ver Todas as Ações");
+        this.textAction = new JLabel(Constants.LABEL_TODAS_ACOES);
+        this.textAction.setForeground(Colors.PRIMARY_COLOR);
 
         southPanel.add(textAction, BorderLayout.EAST);
         southPanel.setBackground(Color.WHITE);
+        southPanel.setBorder(new EmptyBorder(0,0, 10, 20));
 
         this.add(southPanel, BorderLayout.SOUTH);
     }
