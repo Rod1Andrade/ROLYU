@@ -112,7 +112,7 @@ public class NewStocksForm extends AbstractComponent {
 
         this.buttonSave = new JButton(Constants.LABEL_SAVE);
         this.buttonClear = new JButton(Constants.LABEL_Clear);
-        this.resetButtons();
+        this.actionButtonConfig();
 
         gridLayout = new GridLayout(1, 2);
         gridLayout.setHgap(10);
@@ -127,7 +127,10 @@ public class NewStocksForm extends AbstractComponent {
         this.add(actionPanel, BorderLayout.SOUTH);
     }
 
-    private void resetButtons() {
+    /**
+     * Aplicação de certas configurações ao botões de ação desse componente.
+     */
+    private void actionButtonConfig() {
         // Button Save
         this.buttonSave.setContentAreaFilled(true);
         this.buttonSave.setFocusPainted(false);
@@ -138,6 +141,7 @@ public class NewStocksForm extends AbstractComponent {
 
         this.buttonSave.setBackground(Color.white);
         this.buttonSave.addMouseListener(new MouseHover(buttonSave, Colors.PRIMARY_COLOR, Color.WHITE));
+        this.buttonSave.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         // Button Clear
         this.buttonClear.setContentAreaFilled(true);
@@ -148,7 +152,8 @@ public class NewStocksForm extends AbstractComponent {
         this.buttonClear.setModel(new ResetButtonModel());
 
         this.buttonClear.setBackground(Color.white);
-        this.buttonClear.addMouseListener(new MouseHover(buttonClear, Colors.PRIMARY_COLOR, Color.WHITE));
+        this.buttonClear.addMouseListener(new MouseHover(buttonClear, Colors.DANGER_COLOR, Color.WHITE));
+        this.buttonClear.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
 }

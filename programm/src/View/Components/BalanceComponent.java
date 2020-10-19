@@ -58,10 +58,11 @@ public class BalanceComponent extends AbstractComponent {
         JPanel southPanel = new JPanel(new BorderLayout());
         this.textAction = new JLabel(Constants.LABEL_TODAS_ACOES);
         this.textAction.setForeground(Colors.PRIMARY_COLOR);
+        this.textAction.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         southPanel.add(textAction, BorderLayout.EAST);
         southPanel.setBackground(Color.WHITE);
-        southPanel.setBorder(new EmptyBorder(0,0, 10, 20));
+        southPanel.setBorder(new EmptyBorder(0, 0, 10, 20));
 
         this.add(southPanel, BorderLayout.SOUTH);
     }
