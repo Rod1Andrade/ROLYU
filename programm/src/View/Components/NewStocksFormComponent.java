@@ -12,7 +12,7 @@ import java.awt.*;
  *
  * @author Rodrigo Andrade
  */
-public class NewStocksForm extends AbstractComponent {
+public class NewStocksFormComponent extends AbstractComponent {
 
     private JTextField nameField;
 
@@ -24,7 +24,7 @@ public class NewStocksForm extends AbstractComponent {
 
     private ButtonComponent buttonClear;
 
-    public NewStocksForm() {
+    public NewStocksFormComponent() {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);

@@ -1,6 +1,7 @@
 package View.Components;
 
-import Utils.Colors;
+import View.Styles.MouseHover;
+import View.Styles.ResetButtonModel;
 
 import javax.swing.*;
 import java.awt.*;

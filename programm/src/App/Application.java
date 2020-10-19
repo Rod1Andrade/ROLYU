@@ -1,5 +1,6 @@
 package App;
 
+import Controller.Navigator;
 import Utils.Constants;
 import View.Screen.MainScreen;
 
@@ -8,12 +9,15 @@ import java.awt.*;
 
 /**
  * Classe Principal - Entry point
+ *
+ * @author Rodrigo Andrade
  */
 public class Application extends JFrame {
 
     /**
      * Constructor
-     * @param title
+     *
+     * @param title - Titulo da aplicacao
      */
     private Application(String title) {
 
@@ -31,6 +35,7 @@ public class Application extends JFrame {
     /**
      * Roda aplicacao com o componente
      * que deve ser iniciado juntamente.
+     *
      * @param component Componente
      */
     private void run(JComponent component) {
@@ -40,7 +45,8 @@ public class Application extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Application(Constants.TITLE_APP).run(new MainScreen());
+        Application app = new Application(Constants.TITLE_APP);
+        app.run(new MainScreen(app));
     }
 
 }

@@ -1,4 +1,4 @@
-package View.Components;
+package View.Styles;
 
 import javax.swing.*;
 

@@ -1,11 +1,15 @@
 package View.Components;
 
+import Controller.Navigator;
 import Utils.Colors;
 import Utils.Constants;
+import View.Screen.StocksScreen;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Componente de saldo
@@ -22,7 +26,7 @@ public class BalanceComponent extends AbstractComponent {
 
     private int pixels;
 
-    public BalanceComponent() {
+    public BalanceComponent(MouseListener mouseListener) {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);
@@ -59,6 +63,7 @@ public class BalanceComponent extends AbstractComponent {
         this.textAction = new JLabel(Constants.LABEL_TODAS_ACOES);
         this.textAction.setForeground(Colors.PRIMARY_COLOR);
         this.textAction.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.textAction.addMouseListener(mouseListener);
 
         southPanel.add(textAction, BorderLayout.EAST);
         southPanel.setBackground(Color.WHITE);
