@@ -1,6 +1,5 @@
 package App;
 
-import Controller.Navigator;
 import Utils.Constants;
 import View.Screen.MainScreen;
 
