@@ -44,6 +44,7 @@ public class NewStocksForm extends AbstractComponent {
         titleTopPanel.setBackground(Color.white);
 
         JLabel title = new JLabel(Constants.TITLE_NEW_STOCKS);
+        title.setFont(new Font("Arial", Font.PLAIN, 14));
         title.setForeground(Colors.PRIMARY_COLOR);
         titleTopPanel.add(title, BorderLayout.WEST);
 
@@ -111,6 +112,7 @@ public class NewStocksForm extends AbstractComponent {
 
         this.buttonSave = new JButton(Constants.LABEL_SAVE);
         this.buttonClear = new JButton(Constants.LABEL_Clear);
+        this.resetButtons();
 
         gridLayout = new GridLayout(1, 2);
         gridLayout.setHgap(10);
@@ -123,6 +125,30 @@ public class NewStocksForm extends AbstractComponent {
         actionPanel.setBackground(Color.white);
 
         this.add(actionPanel, BorderLayout.SOUTH);
+    }
+
+    private void resetButtons() {
+        // Button Save
+        this.buttonSave.setContentAreaFilled(true);
+        this.buttonSave.setFocusPainted(false);
+        this.buttonSave.setRolloverEnabled(false);
+        this.buttonSave.setBorderPainted(true);
+
+        this.buttonSave.setModel(new ResetButtonModel());
+
+        this.buttonSave.setBackground(Color.white);
+        this.buttonSave.addMouseListener(new MouseHover(buttonSave, Colors.PRIMARY_COLOR, Color.WHITE));
+
+        // Button Clear
+        this.buttonClear.setContentAreaFilled(true);
+        this.buttonClear.setFocusPainted(false);
+        this.buttonClear.setRolloverEnabled(false);
+        this.buttonClear.setBorderPainted(true);
+
+        this.buttonClear.setModel(new ResetButtonModel());
+
+        this.buttonClear.setBackground(Color.white);
+        this.buttonClear.addMouseListener(new MouseHover(buttonClear, Colors.PRIMARY_COLOR, Color.WHITE));
     }
 
 }
