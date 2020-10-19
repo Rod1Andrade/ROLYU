@@ -7,6 +7,8 @@ import java.awt.event.MouseListener;
 /**
  * Controller que implementa o MouseListener
  * e invoca o ChangeScreenController.
+ *
+ * @author Rodrigo Andrade
  */
 public class MouseChangeScreenController implements MouseListener {
 

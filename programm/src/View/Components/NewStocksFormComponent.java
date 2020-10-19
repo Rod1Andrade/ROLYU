@@ -1,18 +1,24 @@
 package View.Components;
 
+import Controller.ControllerInterface;
+import Controller.StocksController;
 import Utils.Colors;
 import Utils.Constants;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Classe para representar o formulario de 'Nova Ação'.
  *
  * @author Rodrigo Andrade
  */
-public class NewStocksFormComponent extends AbstractComponent {
+public class NewStocksFormComponent extends AbstractComponent implements ActionListener {
 
     private JTextField nameField;
 
@@ -24,9 +30,16 @@ public class NewStocksFormComponent extends AbstractComponent {
 
     private ButtonComponent buttonClear;
 
+    private ControllerInterface controllerInterface;
+
+    Map<String, String> values = new HashMap<>();
+
     public NewStocksFormComponent() {
 
         this.dropShadow(6);
+
+        // Se depois quiser passar como argumento ja estou lidando com a interface de controller
+        this.controllerInterface = new StocksController();
 
         // O NewStocksForm componente ocupa 30% do tamanho da tela na largura e 60% na altura.
         int width = (int) (Constants.SCREEN_SIZE.getWidth() * 0.3);
@@ -67,7 +80,6 @@ public class NewStocksFormComponent extends AbstractComponent {
 
         // Name Field
         this.nameField = new JTextField();
-
         fieldPanel.add(nameField, BorderLayout.CENTER);
 
         centerFieldPanel.add(nameLabel);
@@ -80,7 +92,6 @@ public class NewStocksFormComponent extends AbstractComponent {
 
         // Amount Field
         this.amountField = new JTextField();
-
         fieldPanel.add(amountField, BorderLayout.CENTER);
 
         centerFieldPanel.add(amoutLabel);
@@ -111,8 +122,11 @@ public class NewStocksFormComponent extends AbstractComponent {
 
         this.buttonSave = new ButtonComponent(Constants.LABEL_SAVE, Color.WHITE, Color.BLACK);
         this.buttonSave.hover(Colors.PRIMARY_COLOR, Color.WHITE);
+        this.buttonSave.addActionListener(this);
+
         this.buttonClear = new ButtonComponent(Constants.LABEL_Clear, Color.WHITE, Color.BLACK);
         this.buttonClear.hover(Colors.DANGER_COLOR, Color.WHITE);
+        this.buttonClear.addActionListener(this);
 
         gridLayout = new GridLayout(1, 2);
         gridLayout.setHgap(10);
@@ -125,5 +139,47 @@ public class NewStocksFormComponent extends AbstractComponent {
         actionPanel.setBackground(Color.white);
 
         this.add(actionPanel, BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        ButtonComponent buttonPressed = (ButtonComponent) e.getSource();
+        this.fillValues();
+
+        if (buttonPressed.getText().equals(Constants.LABEL_SAVE) && this.values.size() >= 3) {
+            this.controllerInterface.adpaterToStore(this.values);
+            return;
+        }
+
+        if (buttonPressed.getText().equals(Constants.LABEL_Clear)) {
+            this.clearFields();
+            return;
+        }
+    }
+
+    /**
+     * Preenche o Map<String, String>
+     */
+    private void fillValues() {
+        if (!nameField.getText().isEmpty())
+            this.values.put("name", nameField.getText());
+
+        if (!amountField.getText().isEmpty())
+            this.values.put("amount", amountField.getText());
+
+        if (!uniquePriceField.getText().isEmpty())
+            this.values.put("uniquePrice", uniquePriceField.getText());
+    }
+
+    /**
+     * Limpa o valor dos campos
+     */
+    private void clearFields() {
+        nameField.setText(null);
+        amountField.setText(null);
+        uniquePriceField.setText(null);
+
+        this.values.clear();
     }
 }
