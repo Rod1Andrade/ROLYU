@@ -15,9 +15,10 @@ public class ButtonComponent extends JButton {
 
     /**
      * Construtor
-     * @param text - Texto do botao
+     *
+     * @param text        - Texto do botao
      * @param buttonColor - Cor Primaria do botao
-     * @param textColor - Cor de texto do botao
+     * @param textColor   - Cor de texto do botao
      */
     public ButtonComponent(String text, Color buttonColor, Color textColor) {
         this.setContentAreaFilled(true);
@@ -35,6 +36,9 @@ public class ButtonComponent extends JButton {
 
     /**
      * Acao ativada quando o mouse passa por cima do botao.
+     *
+     * @param hoverColor - Cor de destaque
+     * @param textColor  - Cor do texto
      */
     public void hover(Color hoverColor, Color textColor) {
         this.addMouseListener(new MouseHover(this, hoverColor, textColor));

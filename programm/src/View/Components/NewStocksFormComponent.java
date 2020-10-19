@@ -1,18 +1,23 @@
 package View.Components;
 
+import Controller.ControllerInterface;
+import Controller.StocksController;
+import DTO.StocksDTO;
 import Utils.Colors;
 import Utils.Constants;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Classe para representar o formulario de 'Nova Ação'.
  *
  * @author Rodrigo Andrade
  */
-public class NewStocksFormComponent extends AbstractComponent {
+public class NewStocksFormComponent extends AbstractComponent implements ActionListener {
 
     private JTextField nameField;
 
@@ -24,10 +29,15 @@ public class NewStocksFormComponent extends AbstractComponent {
 
     private ButtonComponent buttonClear;
 
+    private ControllerInterface controllerInterface;
+
     public NewStocksFormComponent() {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);
+
+        // Se depois quiser passar como argumento ja estou lidando com a interface de controller
+        this.controllerInterface = new StocksController();
 
         // O NewStocksForm componente ocupa 30% do tamanho da tela na largura e 60% na altura.
         int width = (int) (screenSize.getWidth() * 0.3);
@@ -68,7 +78,6 @@ public class NewStocksFormComponent extends AbstractComponent {
 
         // Name Field
         this.nameField = new JTextField();
-
         fieldPanel.add(nameField, BorderLayout.CENTER);
 
         centerFieldPanel.add(nameLabel);
@@ -81,7 +90,6 @@ public class NewStocksFormComponent extends AbstractComponent {
 
         // Amount Field
         this.amountField = new JTextField();
-
         fieldPanel.add(amountField, BorderLayout.CENTER);
 
         centerFieldPanel.add(amoutLabel);
@@ -112,6 +120,8 @@ public class NewStocksFormComponent extends AbstractComponent {
 
         this.buttonSave = new ButtonComponent(Constants.LABEL_SAVE, Color.WHITE, Color.BLACK);
         this.buttonSave.hover(Colors.PRIMARY_COLOR, Color.WHITE);
+        this.buttonSave.addActionListener(this);
+
         this.buttonClear = new ButtonComponent(Constants.LABEL_Clear, Color.WHITE, Color.BLACK);
         this.buttonClear.hover(Colors.DANGER_COLOR, Color.WHITE);
 
@@ -126,5 +136,16 @@ public class NewStocksFormComponent extends AbstractComponent {
         actionPanel.setBackground(Color.white);
 
         this.add(actionPanel, BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        this.controllerInterface.store(
+                new StocksDTO(
+                        this.nameField.getText(),
+                        this.amountField.getText(),
+                        this.uniquePriceField.getText()
+                )
+        );
     }
 }

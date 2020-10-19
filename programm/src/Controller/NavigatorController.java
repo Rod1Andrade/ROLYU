@@ -4,6 +4,8 @@ import javax.swing.*;
 
 /**
  * Classe responsavel por fazer a navegacao entre telas.
+ *
+ * @author Rodrigo Andrade
  */
 public class NavigatorController {
 
