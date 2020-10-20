@@ -3,6 +3,7 @@ package View.Components;
 import Controller.ControllerInterface;
 import Utils.Colors;
 import Utils.Constants;
+import database.dao.StocksDAO;
 import model.Stocks;
 
 import javax.swing.*;
@@ -29,11 +30,14 @@ public class DeleteStocksFormComponent extends AbstractComponent implements Acti
 
     private ControllerInterface controllerInterface;
 
+    private Stocks stock;
+
     private Map<String, String> values = new HashMap<>();
 
     public DeleteStocksFormComponent(ControllerInterface controllerInterface, Stocks stock) {
 
         this.dropShadow(6);
+        this.stock = stock;
 
         // Define o controller
         this.controllerInterface = controllerInterface;
@@ -152,8 +156,14 @@ public class DeleteStocksFormComponent extends AbstractComponent implements Acti
         }
 
         if (buttonPressed.getText().equals(Constants.LABEL_DELETE)) {
+            deleteStock();
             this.clearFields();
         }
+    }
+
+    public void deleteStock() {
+        StocksDAO stockDAO = new StocksDAO();
+        stockDAO.remove(this.stock);
     }
 
     /**

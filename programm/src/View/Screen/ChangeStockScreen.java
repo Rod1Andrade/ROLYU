@@ -16,10 +16,12 @@ import java.awt.*;
 public class ChangeStockScreen extends AbsctractScreen {
 
     DeleteStocksFormComponent form;
+    public String rowName;
 
-    public ChangeStockScreen(JFrame parent, AbsctractScreen parentScreen) {
+    public ChangeStockScreen(JFrame parent, AbsctractScreen parentScreen, String rowName) {
         super(parent, parentScreen);
         this.setLayout(new BorderLayout());
+        this.rowName = rowName;
 
         JLabel label = new JLabel("Voltar");
         label.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -31,10 +33,7 @@ public class ChangeStockScreen extends AbsctractScreen {
 
         StocksDAO stocks = new StocksDAO();
 
-        System.out.println(stocks.getById(10));
-
-
-        this.form = new DeleteStocksFormComponent(new StocksController(), stocks.getById(1));
+        this.form = new DeleteStocksFormComponent(new StocksController(), stocks.getByName(this.rowName));
         changeFormPanel.add(form);
 
         this.add(label, BorderLayout.NORTH);

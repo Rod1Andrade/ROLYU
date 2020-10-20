@@ -1,5 +1,6 @@
 package View.Components;
 
+import Controller.MouseChangeScreenController;
 import Controller.StocksController;
 import Utils.Colors;
 import Utils.Constants;
@@ -7,6 +8,7 @@ import model.Stocks;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -14,15 +16,14 @@ import java.util.ArrayList;
 public class WalletComponent extends AbstractComponent {
 
     private JTable walletTable;
-    private JLabel textActionChange;
-    MouseListener mouseListener;
+
 
     ArrayList<Stocks> stocksList;
 
     DefaultTableModel model = new DefaultTableModel();
 
-    public WalletComponent(MouseListener mouseListener) {
-        this.mouseListener = mouseListener;
+    public WalletComponent() {
+        this.walletTable = new JTable(model);
 
         this.dropShadow(6);
 
@@ -35,12 +36,11 @@ public class WalletComponent extends AbstractComponent {
         JScrollPane scroll = new JScrollPane(createTable());
 
 
-
         this.add(scroll);
     }
 
     private JTable createTable() {
-        walletTable = new JTable(model);
+
 
         StocksController stocksController = new StocksController();
         stocksList = (ArrayList<Stocks>) stocksController.show();
@@ -48,13 +48,21 @@ public class WalletComponent extends AbstractComponent {
         model.addColumn("NOME");
         model.addColumn("QUANTIDADE");
         model.addColumn("TOTAL");
-        model.addColumn("OPÇÃO");
+
 
         for (Stocks stock : stocksList) {
-            model.addRow(new Object[]{stock.getName(), stock.getAmount(), stock.getTotalPrice(), "Alterar"});
+            model.addRow(new Object[]{stock.getName(), stock.getAmount(), stock.getTotalPrice()});
         }
 
 
-        return walletTable;
+        return this.walletTable;
+    }
+
+    public String getNameofSelectedRow() {
+        int row = walletTable.getSelectedRow();
+        if(row == -1)
+            return model.getValueAt(1, 0).toString();
+        else
+            return model.getValueAt(row, 0).toString();
     }
 }

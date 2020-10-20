@@ -123,6 +123,33 @@ public class StocksDAO implements DataAccessObject<Stocks> {
         }
     }
 
+    public Stocks getByName(String name) {
+
+        Stocks stocks = null;
+        Connection connection;
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE name = ?";
+
+        try {
+            connection = SqliteConnection.getInstance();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()) {
+                stocks = new Stocks();
+                stocks.setId(resultSet.getInt("id"));
+                stocks.setName(resultSet.getString("name"));
+                stocks.setAmount(resultSet.getInt("amount"));
+                stocks.setTotalPrice(resultSet.getDouble("totalPrice"));
+            }
+
+            return stocks;
+        } catch (SQLException exception) {
+            throw new StocksException(exception.getMessage());
+        }
+    }
+
     /**
      * Retorna todas as ocorrências de Stocks
      * @return List<Stocks>
