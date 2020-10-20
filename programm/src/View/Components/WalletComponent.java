@@ -1,46 +1,20 @@
 package View.Components;
 
+import Controller.StocksController;
 import Utils.Constants;
+import model.Stocks;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class WalletComponent extends AbstractComponent {
 
     private JTable walletTable;
+    ArrayList<Stocks> stocksList;
+
     DefaultTableModel model = new DefaultTableModel();
-
-    Object [][] data = {
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"},
-            {"ITSA4", "20", "R$ 340,00"},
-            {"ABC3", "10", "R$ 340,00"},
-            {"CCS3", "30", "R$ 340,00"}
-    };
-
 
     public WalletComponent() {
 
@@ -60,10 +34,17 @@ public class WalletComponent extends AbstractComponent {
     private JTable createTable() {
         walletTable = new JTable(model);
 
+        StocksController stocksController = new StocksController();
+        stocksList = (ArrayList<Stocks>) stocksController.show();
+
         model.addColumn("NOME");
         model.addColumn("QUANTIDADE");
         model.addColumn("TOTAL");
         model.addColumn("OPÇÕES");
+
+        for (Stocks stock : stocksList) {
+            model.addRow(new Object[]{stock.getName(), stock.getAmount(), stock.getTotalPrice(), "OPTION"});
+        }
 
 
         return walletTable;

@@ -6,6 +6,7 @@ import Utils.Constants;
 import database.dao.StocksDAO;
 import model.Stocks;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,6 +33,11 @@ public class StocksController implements ControllerInterface<StocksDTO, Stocks> 
         this.getStocksRepository().persist(dto.adapter(dto));
     }
 
+    @Override
+    public List<Stocks> show() {
+        return this.getStocksRepository().getAll();
+    }
+
     /**
      * Retorna uma instancia de stockRepository
      *
@@ -44,5 +50,6 @@ public class StocksController implements ControllerInterface<StocksDTO, Stocks> 
 
         return this.stocksRepository;
     }
+
 
 }

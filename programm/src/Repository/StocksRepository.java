@@ -4,6 +4,8 @@ import Exceptions.StocksException;
 import database.dao.DataAccessObject;
 import model.Stocks;
 
+import java.util.List;
+
 /**
  * Classe Repository da entidade 'Stocks'
  *
@@ -34,4 +36,16 @@ public class StocksRepository {
             System.out.println(exception.getMessage());
         }
     }
+
+    /**
+     * retorna todas as stocks
+     *
+     * @return
+     */
+    public List<Stocks> getAll() {
+        return this.dao.getAll();
+    }
+
+
+
 }

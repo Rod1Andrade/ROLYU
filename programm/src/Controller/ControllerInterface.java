@@ -1,5 +1,6 @@
 package Controller;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,5 +23,12 @@ public interface ControllerInterface<DTO, Model> {
      * @param values Map<String, Object>
      */
     void adpaterToStore(Map<String, Object> values);
+
+    /**
+     * retorna todos os dados da entidade
+     *
+     * @return
+     */
+    List<Model> show();
 
 }
