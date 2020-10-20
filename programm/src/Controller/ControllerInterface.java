@@ -3,7 +3,7 @@ package Controller;
 import java.util.Map;
 
 /**
- * Interface de controlle padrao
+ * Interface de controlle padrao para entidades.
  *
  * @author Rodrigo Andrade
  */

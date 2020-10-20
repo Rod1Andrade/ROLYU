@@ -1,6 +1,7 @@
 package View.Screen;
 
 import Controller.MouseChangeScreenController;
+import Controller.StocksController;
 import View.Components.BalanceComponent;
 import View.Components.NewStocksFormComponent;
 
@@ -42,7 +43,7 @@ public class MainScreen extends AbsctractScreen {
 
         // Coluna 2
         JPanel newStocksFormPanel = new JPanel();
-        this.newStocksForm = new NewStocksFormComponent();
+        this.newStocksForm = new NewStocksFormComponent(new StocksController());
         newStocksFormPanel.add(newStocksForm);
         newStocksFormPanel.setBackground(Color.WHITE);
 

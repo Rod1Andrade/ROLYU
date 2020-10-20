@@ -13,9 +13,13 @@ public class Constants {
     public static final String LABEL_AMOUNT = "Quantidade:";
     public static final String LABEL_UNIQUE_PRICE = "Preço Único:";
     public static final String LABEL_SAVE = "Salvar";
-    public static final String LABEL_Clear = "Limpar";
+    public static final String LABEL_CLEAR = "Limpar";
 
     public static final String TITLE_APP = "Rolyu";
     public static final String TITLE_NEW_STOCKS = "Nova Ação";
+
+    public static final String KEY_NAME = "name";
+    public static final String KEY_AMOUNT = "amount";
+    public static final String KEY_UNIQUE_PRICE = "uniquePrice";
 
 }

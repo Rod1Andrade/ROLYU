@@ -32,15 +32,15 @@ public class NewStocksFormComponent extends AbstractComponent implements ActionL
 
     private ControllerInterface controllerInterface;
 
-    Map<String, String> values = new HashMap<>();
+    private Map<String, String> values = new HashMap<>();
 
-    public NewStocksFormComponent() {
+    public NewStocksFormComponent(ControllerInterface controllerInterface) {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);
 
-        // Se depois quiser passar como argumento ja estou lidando com a interface de controller
-        this.controllerInterface = new StocksController();
+        // Define o controller
+        this.controllerInterface = controllerInterface;
 
         // O NewStocksForm componente ocupa 30% do tamanho da tela na largura e 60% na altura.
         int width = (int) (screenSize.getWidth() * 0.3);
@@ -125,7 +125,7 @@ public class NewStocksFormComponent extends AbstractComponent implements ActionL
         this.buttonSave.hover(Colors.PRIMARY_COLOR, Color.WHITE);
         this.buttonSave.addActionListener(this);
 
-        this.buttonClear = new ButtonComponent(Constants.LABEL_Clear, Color.WHITE, Color.BLACK);
+        this.buttonClear = new ButtonComponent(Constants.LABEL_CLEAR, Color.WHITE, Color.BLACK);
         this.buttonClear.hover(Colors.DANGER_COLOR, Color.WHITE);
         this.buttonClear.addActionListener(this);
 
@@ -150,12 +150,12 @@ public class NewStocksFormComponent extends AbstractComponent implements ActionL
 
         if (buttonPressed.getText().equals(Constants.LABEL_SAVE) && this.values.size() >= 3) {
             this.controllerInterface.adpaterToStore(this.values);
+            this.clearFields();
             return;
         }
 
-        if (buttonPressed.getText().equals(Constants.LABEL_Clear)) {
+        if (buttonPressed.getText().equals(Constants.LABEL_CLEAR)) {
             this.clearFields();
-            return;
         }
     }
 
@@ -164,13 +164,13 @@ public class NewStocksFormComponent extends AbstractComponent implements ActionL
      */
     private void fillValues() {
         if (!nameField.getText().isEmpty())
-            this.values.put("name", nameField.getText());
+            this.values.put(Constants.KEY_NAME, nameField.getText());
 
         if (!amountField.getText().isEmpty())
-            this.values.put("amount", amountField.getText());
+            this.values.put(Constants.KEY_AMOUNT, amountField.getText());
 
         if (!uniquePriceField.getText().isEmpty())
-            this.values.put("uniquePrice", uniquePriceField.getText());
+            this.values.put(Constants.KEY_UNIQUE_PRICE, uniquePriceField.getText());
     }
 
     /**

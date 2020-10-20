@@ -1,6 +1,9 @@
 package Controller;
 
 import DTO.StocksDTO;
+import Repository.StocksRepository;
+import Utils.Constants;
+import database.dao.StocksDAO;
 import model.Stocks;
 
 import java.util.Map;
@@ -12,11 +15,13 @@ import java.util.Map;
  */
 public class StocksController implements ControllerInterface<StocksDTO, Stocks> {
 
+    private StocksRepository stocksRepository;
+
     public void adpaterToStore(Map<String, Object> values) {
         StocksDTO stocksDTO = new StocksDTO(
-                (String) values.get("name"),
-                (String) values.get("amount"),
-                (String) values.get("uniquePrice")
+                (String) values.get(Constants.KEY_NAME),
+                (String) values.get(Constants.KEY_AMOUNT),
+                (String) values.get(Constants.KEY_UNIQUE_PRICE)
         );
 
         this.store(stocksDTO);
@@ -24,9 +29,20 @@ public class StocksController implements ControllerInterface<StocksDTO, Stocks> 
 
     @Override
     public void store(StocksDTO dto) {
-        System.out.println(dto.getName());
-        System.out.println(dto.getAmount());
-        System.out.println(dto.getUniquePrice());
+        this.getStocksRepository().persist(dto.adapter(dto));
+    }
+
+    /**
+     * Retorna uma instancia de stockRepository
+     *
+     * @return
+     */
+    private StocksRepository getStocksRepository() {
+        if (stocksRepository == null) {
+            this.stocksRepository = new StocksRepository(new StocksDAO());
+        }
+
+        return this.stocksRepository;
     }
 
 }
