@@ -32,6 +32,7 @@ public class StocksDAO implements DataAccessObject<Stocks> {
                 "name VARCHAR(45) NOT NULL UNIQUE," +
                 "amount INTEGER NOT NULL," +
                 "totalPrice REAL NOT NULL" +
+                "uniquePrice REAL NOT NULL" +
                 ")";
 
         PreparedStatement preparedStatement = connection.prepareStatement(ddl);
@@ -45,7 +46,7 @@ public class StocksDAO implements DataAccessObject<Stocks> {
      */
     public boolean persist(Stocks stocks) {
 
-        String sql = "INSERT INTO tb_stocks('name', 'amount', 'totalPrice') VALUES (?, ?, ?)";
+        String sql = "INSERT INTO tb_stocks('name', 'amount', 'totalPrice', 'uniquePrice') VALUES (?, ?, ?, ?)";
 
         Connection connection;
         try {
@@ -54,12 +55,16 @@ public class StocksDAO implements DataAccessObject<Stocks> {
             preparedStatement.setString(1, stocks.getName());
             preparedStatement.setInt(2, stocks.getAmount());
             preparedStatement.setDouble(3, stocks.calcTotalPrice());
+            preparedStatement.setDouble(4, stocks.getUniquePrice());
+
 
             return preparedStatement.execute();
         } catch (SQLException exception) {
             throw new StocksException(exception.getMessage());
         }
     }
+
+
 
     /**
      *
@@ -73,6 +78,7 @@ public class StocksDAO implements DataAccessObject<Stocks> {
                 "name = ?, " +
                 "amount = ?, " +
                 "totalPrice = ?" +
+                "uniquePrice = ?" +
                 " WHERE id = ?";
 
         try {
@@ -82,7 +88,8 @@ public class StocksDAO implements DataAccessObject<Stocks> {
             preparedStatement.setString(1, stocks.getName());
             preparedStatement.setInt(2, stocks.getAmount());
             preparedStatement.setDouble(3, stocks.getTotalPrice());
-            preparedStatement.setInt(4, stocks.getId());
+            preparedStatement.setDouble(4, stocks.getUniquePrice());
+            preparedStatement.setInt(5, stocks.getId());
 
             return preparedStatement.executeUpdate();
 
@@ -115,6 +122,7 @@ public class StocksDAO implements DataAccessObject<Stocks> {
                 stocks.setName(resultSet.getString("name"));
                 stocks.setAmount(resultSet.getInt("amount"));
                 stocks.setTotalPrice(resultSet.getDouble("totalPrice"));
+                stocks.setUniquePrice(resultSet.getDouble("uniquePrice"));
             }
 
             return stocks;
@@ -142,6 +150,7 @@ public class StocksDAO implements DataAccessObject<Stocks> {
                 stocks.setName(resultSet.getString("name"));
                 stocks.setAmount(resultSet.getInt("amount"));
                 stocks.setTotalPrice(resultSet.getDouble("totalPrice"));
+                stocks.setUniquePrice(resultSet.getDouble("uniquePrice"));
             }
 
             return stocks;
@@ -174,6 +183,7 @@ public class StocksDAO implements DataAccessObject<Stocks> {
                    stocks.setName(resultSet.getString("name"));
                    stocks.setAmount(resultSet.getInt("amount"));
                    stocks.setTotalPrice(resultSet.getDouble("totalPrice"));
+                   stocks.setUniquePrice(resultSet.getDouble("uniquePrice"));
 
                    stocksList.add(stocks);
                }

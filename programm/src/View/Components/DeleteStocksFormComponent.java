@@ -32,6 +32,8 @@ public class DeleteStocksFormComponent extends AbstractComponent implements Acti
 
     private Stocks stock;
 
+    public StocksDAO stocksDAO;
+
     private Map<String, String> values = new HashMap<>();
 
     public DeleteStocksFormComponent(ControllerInterface controllerInterface, Stocks stock) {
@@ -106,7 +108,7 @@ public class DeleteStocksFormComponent extends AbstractComponent implements Acti
         labelPanel.add(uniquePriceLabel, BorderLayout.WEST);
 
         // Unique Price Field
-        this.uniquePriceField = new JTextField();
+        this.uniquePriceField = new JTextField(Double.toString(stock.getUniquePrice()));
 
         fieldPanel.add(uniquePriceField, BorderLayout.CENTER);
 
@@ -149,8 +151,15 @@ public class DeleteStocksFormComponent extends AbstractComponent implements Acti
         ButtonComponent buttonPressed = (ButtonComponent) e.getSource();
         this.fillValues();
 
-        if (buttonPressed.getText().equals(Constants.LABEL_SAVE) && this.values.size() >= 3) {
-            this.controllerInterface.adpaterToStore(this.values);
+        if (buttonPressed.getText().equals(Constants.LABEL_SAVE) && this.values != null) {
+            this.stock.setId(this.stock.getId());
+
+            this.stock.setName(this.nameField.getText());
+            this.stock.setAmount(Integer.parseInt(this.amountField.getText()));
+            this.stock.setUniquePrice(Double.parseDouble(this.uniquePriceField.getText()));
+
+            stocksDAO = new StocksDAO();
+            stocksDAO.update(this.stock);
             this.clearFields();
             return;
         }
