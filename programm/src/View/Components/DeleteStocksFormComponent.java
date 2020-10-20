@@ -156,7 +156,7 @@ public class DeleteStocksFormComponent extends AbstractComponent implements Acti
             this.stock.setAmount(Integer.parseInt(this.amountField.getText()));
             this.stock.setUniquePrice(Double.parseDouble(this.uniquePriceField.getText()));
 
-            StockDAO stocksDAO = new StocksDAO();
+            StocksDAO stocksDAO = new StocksDAO();
             stocksDAO.update(this.stock);
             this.clearFields();
             return;
