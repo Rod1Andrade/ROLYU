@@ -6,6 +6,7 @@ import View.Components.BalanceComponent;
 import View.Components.NewStocksFormComponent;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -47,6 +48,7 @@ public class MainScreen extends AbsctractScreen {
         newStocksFormPanel.add(newStocksForm);
         newStocksFormPanel.setBackground(Color.WHITE);
 
+        this.setBorder(new EmptyBorder(50, 70, 50, 70));
         this.add(newStocksFormPanel);
     }
 

@@ -3,13 +3,14 @@ package View.Components;
 import Utils.Constants;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class WalletComponent extends AbstractComponent {
 
     private JTable walletTable;
+    DefaultTableModel model = new DefaultTableModel();
 
-    String [] collums = {"NOME", "QUANTIDADE", "TOTAL"};
     Object [][] data = {
             {"ITSA4", "20", "R$ 340,00"},
             {"ABC3", "10", "R$ 340,00"},
@@ -51,11 +52,20 @@ public class WalletComponent extends AbstractComponent {
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(width, height));
 
-        walletTable = new JTable(data, collums);
-
-
-        JScrollPane scroll = new JScrollPane(walletTable);
+        JScrollPane scroll = new JScrollPane(createTable());
 
         this.add(scroll);
+    }
+
+    private JTable createTable() {
+        walletTable = new JTable(model);
+
+        model.addColumn("NOME");
+        model.addColumn("QUANTIDADE");
+        model.addColumn("TOTAL");
+        model.addColumn("OPÇÕES");
+
+
+        return walletTable;
     }
 }

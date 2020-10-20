@@ -1,6 +1,7 @@
 package View.Screen;
 
 import Controller.MouseChangeScreenController;
+import Utils.Constants;
 import View.Components.WalletComponent;
 
 import javax.swing.*;
@@ -28,10 +29,12 @@ public class StocksScreen extends AbsctractScreen {
         );
 
         JPanel walletPanel = new JPanel();
+
+
         wallet = new WalletComponent();
         walletPanel.add(wallet);
 
-        walletPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+        walletPanel.setBorder(new EmptyBorder(200, 0, 0, 0));
 
         this.add(label, BorderLayout.NORTH);
         this.add(walletPanel, BorderLayout.CENTER);
