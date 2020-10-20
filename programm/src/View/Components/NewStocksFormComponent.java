@@ -48,6 +48,7 @@ public class NewStocksFormComponent extends AbstractComponent implements ActionL
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(width, height));
 
+
         // *************************************************
         // Titulo do Topo
         // *************************************************
