@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseListener;
+import java.lang.invoke.ConstantCallSite;
 
 /**
  * Componente de saldo
@@ -25,12 +26,11 @@ public class BalanceComponent extends AbstractComponent {
 
     public BalanceComponent(MouseListener mouseListener) {
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.dropShadow(6);
 
         // O Balance componente ocupa 30% do tamanho da tela em ambas as direcoes.
-        int width = (int) (screenSize.getWidth() * 0.3);
-        int height = (int) (screenSize.getHeight() * 0.3);
+        int width = (int) (Constants.SCREEN_SIZE.getWidth() * 0.3);
+        int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.3);
 
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(width, height));

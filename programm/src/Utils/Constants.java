@@ -1,5 +1,7 @@
 package Utils;
 
+import java.awt.*;
+
 /**
  * Classe para valores constantes.
  *
@@ -21,5 +23,5 @@ public class Constants {
     public static final String KEY_NAME = "name";
     public static final String KEY_AMOUNT = "amount";
     public static final String KEY_UNIQUE_PRICE = "uniquePrice";
-
+    public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 }
