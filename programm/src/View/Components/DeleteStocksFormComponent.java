@@ -150,7 +150,14 @@ public class DeleteStocksFormComponent extends AbstractComponent implements Acti
         this.fillValues();
 
         if (buttonPressed.getText().equals(Constants.LABEL_SAVE) && this.values.size() >= 3) {
-            this.controllerInterface.adpaterToStore(this.values);
+            this.stock.setId(this.stock.getId());
+
+            this.stock.setName(this.nameField.getText());
+            this.stock.setAmount(Integer.parseInt(this.amountField.getText()));
+            this.stock.setUniquePrice(Double.parseDouble(this.uniquePriceField.getText()));
+
+            StockDAO stocksDAO = new StocksDAO();
+            stocksDAO.update(this.stock);
             this.clearFields();
             return;
         }
