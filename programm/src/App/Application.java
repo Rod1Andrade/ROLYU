@@ -1,6 +1,7 @@
 package App;
 
 import Utils.Constants;
+import View.Screen.ChangeStockScreen;
 import View.Screen.MainScreen;
 import View.Screen.StocksScreen;
 import model.Stocks;
