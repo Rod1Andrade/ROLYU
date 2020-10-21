@@ -2,12 +2,16 @@ package View.Components;
 
 import Utils.Colors;
 import Utils.Constants;
+import database.dao.StocksDAO;
+import model.Stocks;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.lang.invoke.ConstantCallSite;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
  * Componente de saldo
@@ -23,6 +27,8 @@ public class BalanceComponent extends AbstractComponent {
     private JLabel textAction;
 
     private int pixels;
+
+    DecimalFormat df = new DecimalFormat("#,###.00");
 
     public BalanceComponent(MouseListener mouseListener) {
 
@@ -44,7 +50,7 @@ public class BalanceComponent extends AbstractComponent {
         this.labelBalance.setFont(font);
         this.labelBalance.setForeground(Colors.PRIMARY_COLOR);
 
-        this.textValue = new JLabel("R$ 1500,00");
+        this.textValue = new JLabel("R$ "+ df.format(getAllTotalPrice()));
         this.textValue.setFont(font);
 
         centerPanel.add(labelBalance, BorderLayout.WEST);
@@ -67,5 +73,19 @@ public class BalanceComponent extends AbstractComponent {
         southPanel.setBorder(new EmptyBorder(0, 0, 10, 20));
 
         this.add(southPanel, BorderLayout.SOUTH);
+    }
+
+    public Double getAllTotalPrice() {
+
+        StocksDAO stocksDAO = new StocksDAO();
+
+        ArrayList<Stocks> stocks = (ArrayList) stocksDAO.getAll();
+
+        Double totalPriceAll = 0.0;
+        for(Stocks stock : stocks) {
+            totalPriceAll += stock.getTotalPrice();
+        }
+
+        return totalPriceAll;
     }
 }
